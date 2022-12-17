@@ -1,27 +1,37 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <main id="root">
+        <Navbar />
+        <MessagesList />
+        <MessageForm />
+    </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import MessageForm from './components/MessageForm.vue';
+import MessagesList from './components/MessagesList.vue';
+import Navbar from './components/Navbar.vue';
 
 export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: 'App',
+    components: { Navbar, MessageForm, MessagesList }
 });
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+    box-sizing: border-box;
+}
+
+main#root {
+    --primary-color: #202020;
+    --secondary-color: #424242;
+    --tertiary-color: 	#e3e3e3;
+
+    --primary-text-color: white;
+    --tertiary-text-color: black;
+
+    background-color: var(--secondary-color);
+    height: 100vh;
 }
 </style>

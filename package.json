@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-vue-server": "cd vue-server && npm run serve"
   },
   "author": "Tarcísio J. S. Rodrigues",
   "license": "GPL-3.0"
