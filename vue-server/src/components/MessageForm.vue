@@ -1,23 +1,41 @@
 <template>
-    <form id="message-form" class="pure-form">
-        <input id="message-content" type="text" placeholder="Type your message here.">
+    <form id="message-form" class="pure-form" @submit="sendMessage">
+        <input v-model="messageContent" id="message-content" type="text" placeholder="Type your message here.">
         <button id="send-message" type="submit" class="pure-button pure-button-active">Send</button>
     </form>
 </template>
 
 <script lang="ts">
+import socketClient from '@/socketClient';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'MessageForm'
+    name: 'MessageForm',
+    data() {
+        return {
+            messageSenderUsername: 'username',
+            messageContent: ''
+        };
+    },
+    methods: {
+        sendMessage(event: Event) {
+            event.preventDefault();
+
+            const messageData = {
+                sender_username: this.messageSenderUsername,
+                content: this.messageContent
+            };
+
+            socketClient.emit('new-message', messageData);
+
+            this.messageContent = '';
+        }
+    }
 });
 </script>
 
 <style scoped>
 form#message-form {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
     width: 100%;
     background-color: var(--primary-color);
     padding: 10px;

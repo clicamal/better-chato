@@ -32,6 +32,5 @@ main#root {
     --tertiary-text-color: black;
 
     background-color: var(--secondary-color);
-    height: 100vh;
 }
 </style>
