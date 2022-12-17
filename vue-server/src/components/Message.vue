@@ -1,6 +1,6 @@
 <template>
     <li class="message">
-        <h4 class="message-sender-username">{{data.sender_username}}</h4>
+        <h4 ref="messageSenderUsername" class="message-sender-username">{{data.sender_username}}</h4>
         <p class="message-content">{{data.content}}</p>
     </li>
 </template>
@@ -15,6 +15,15 @@ export default defineComponent({
         data: {
             type: Object as PropType<MessageDataInterface>,
             required: true
+        }
+    },
+    mounted() {
+        const messageSenderUsername = (this.$refs.messageSenderUsername as HTMLHeadingElement);
+        const username = sessionStorage.getItem('username');
+
+        if (this.data.sender_username === username) {
+            messageSenderUsername.innerText = 'You';
+            messageSenderUsername.style.textAlign = 'right';
         }
     }
 });

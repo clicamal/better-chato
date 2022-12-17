@@ -1,6 +1,6 @@
 <template>
     <form id="message-form" class="pure-form" @submit="sendMessage">
-        <input v-model="messageContent" id="message-content" type="text" placeholder="Type your message here.">
+        <input ref="messageContent" v-model="messageContent" autocomplete="off" id="message-content" type="text" placeholder="Type your message here.">
         <button id="send-message" type="submit" class="pure-button pure-button-active">Send</button>
     </form>
 </template>
@@ -9,11 +9,13 @@
 import socketClient from '@/socketClient';
 import { defineComponent } from 'vue';
 
+const username = sessionStorage.getItem('username');
+
 export default defineComponent({
     name: 'MessageForm',
     data() {
         return {
-            messageSenderUsername: 'username',
+            messageSenderUsername: username,
             messageContent: ''
         };
     },
@@ -29,6 +31,7 @@ export default defineComponent({
             socketClient.emit('new-message', messageData);
 
             this.messageContent = '';
+            (this.$refs.messageContent as HTMLInputElement).focus();
         }
     }
 });

@@ -38,12 +38,11 @@ export default defineComponent({
 <style scoped>
 ul#messages-list {
     margin: 0px;
-    margin-top: 34.39px;
     padding: 10px;
     padding-bottom: 0px;
-    height: calc(100vh - 88px);
     overflow-y: scroll;
     scroll-behavior: smooth;
     background-color: var(--secondary-color);
+    list-style: none;
 }
 </style>

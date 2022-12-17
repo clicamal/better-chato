@@ -1,8 +1,10 @@
 <template>
     <main id="root">
         <Navbar />
-        <MessagesList />
-        <MessageForm />
+        <div id="interaction">
+            <MessagesList />
+            <MessageForm />
+        </div>
     </main>
 </template>
 
@@ -14,7 +16,14 @@ import Navbar from './components/Navbar.vue';
 
 export default defineComponent({
     name: 'App',
-    components: { Navbar, MessageForm, MessagesList }
+    components: { Navbar, MessageForm, MessagesList },
+    mounted() {
+        if (sessionStorage.getItem('username') === null) {
+            const username = (prompt('Type your username:') as string);
+            sessionStorage.setItem('username', username);
+            location.reload();
+        }
+    }
 });
 </script>
 
@@ -32,5 +41,12 @@ main#root {
     --tertiary-text-color: black;
 
     background-color: var(--secondary-color);
+}
+
+div#interaction {
+    display: grid;
+    grid-template-rows: calc(100% - 54px) 54px;
+    height: calc(100vh - 34.49px);
+    margin-top: 34.39px;
 }
 </style>
