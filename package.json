@@ -1,0 +1,11 @@
+{
+  "name": "better-chato",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tarcísio J. S. Rodrigues",
+  "license": "GPL-3.0"
+}
