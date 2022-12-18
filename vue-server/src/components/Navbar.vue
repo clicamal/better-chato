@@ -16,7 +16,7 @@ export default defineComponent({
 nav#navbar {
     background-color: var(--primary-color);
     box-shadow: 0px 0px 7px 0px black;
-    position: fixed;
+    position: static;
     top: 0px;
     left: 0px;
     z-index: 10;

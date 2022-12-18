@@ -60,5 +60,6 @@ button#send-message {
     border-radius: 0px 5px 5px 0px;
     background-color: var(--tertiary-color) !important;
     color: var(--tertiary-text-color);
+    width: 69.38px;
 }
 </style>
