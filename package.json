@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-vue-server": "cd vue-server && npm run serve"
+    "start-vue-server": "cd vue-server && npm run serve",
+    "start-socket-server": "cd socket-server && npm run start"
   },
   "author": "Tarcísio J. S. Rodrigues",
   "license": "GPL-3.0"
