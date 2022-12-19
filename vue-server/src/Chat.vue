@@ -12,14 +12,7 @@ import Navbar from './components/Navbar.vue';
 
 export default defineComponent({
     name: 'ChatComponent',
-    components: { Navbar, MessageForm, MessagesList },
-    mounted() {
-        if (sessionStorage.getItem('username') === null) {
-            const username = (prompt('Type your username:') as string);
-            sessionStorage.setItem('username', username);
-            location.reload();
-        }
-    }
+    components: { Navbar, MessageForm, MessagesList }
 });
 </script>
 
