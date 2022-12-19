@@ -12,6 +12,52 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
         integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        main#root {
+            --primary-color: #202020;
+            --secondary-color: #424242;
+            --tertiary-color: #e3e3e3;
+
+            --primary-text-color: white;
+            --tertiary-text-color: black;
+
+            background-color: var(--secondary-color);
+        }
+
+        form.authentication-form {
+            background-color: var(--primary-color) !important;
+            margin: 25% auto;
+            width: calc(100% - 20px);
+            height: fit-content;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        form.authentication-form>h3 {
+            color: var(--primary-text-color);
+            text-align: center;
+            margin-top: 8.72px;
+        }
+
+        form.authentication-form>input,
+        form.authentication-form>button {
+            width: 100%;
+        }
+
+        form.authentication-form>input {
+            margin-bottom: 10px;
+        }
+
+        form.authentication-form>button {
+            background-color: var(--tertiary-color) !important;
+            color: var(--tertiary-text-color);
+        }
+    </style>
 </head>
 
 <body>
@@ -19,7 +65,9 @@
         <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
                 Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <main id="root">
+        <router-view></router-view>
+    </main>
     <!-- built files will be auto injected -->
 </body>
 
