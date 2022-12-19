@@ -1,7 +1,7 @@
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Chat from './Chat.vue';
-import RegisterForm from './RegisterForm.vue';
+import RegistrationForm from './RegistrationForm.vue';
 import LoginForm from './LoginForm.vue';
 
 // 1. Define route components.
@@ -12,7 +12,7 @@ import LoginForm from './LoginForm.vue';
 // We'll talk about nested routes later.
 const routes = [
     { path: '/', component: Chat },
-    { path: '/register', component: RegisterForm },
+    { path: '/register', component: RegistrationForm },
     { path: '/login', component: LoginForm }
 ]
 
