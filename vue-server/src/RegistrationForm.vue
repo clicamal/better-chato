@@ -1,56 +1,49 @@
 <template>
-    <form id="registration-form" class="pure-form authentication-form" @submit="register">
-        <h3 id="registration-form-heading">Registration</h3>
-
-        <input v-model="username" type="text" name="username" id="username-input" placeholder="Username">
-        <input v-model="password" type="password" name="password" id="password-input" placeholder="Password">
-        <button type="submit" class="pure-button pure-button-active">Register</button>
-    </form>
+    <Authentication heading="Registration" @submit="register">
+        <input v-model="username" type="text" name="username" id="username-input" class="pure-input-1" placeholder="Username">
+        <input v-model="password" type="password" name="password" id="password-input" class="pure-input-1" placeholder="Password">
+        <button type="submit" class="pure-input-1 pure-button pure-button-active">Register</button>
+    </Authentication>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import apiClient from './apiClient';
+import Authentication from './components/authentication/Authentication.vue';
 
 export default defineComponent({
-    name: 'RegisterForm',
+    name: "RegisterForm",
     data() {
         return {
-            username: '',
-            password: ''
-        }
+            username: "",
+            password: ""
+        };
     },
     methods: {
-        register(event: Event) {
-            event.preventDefault();
+        register(onAuthenticationRequestError: (reason: any) => PromiseLike<never>) {
 
             const userData = {
                 username: this.username,
                 password: this.password
             };
-
             apiClient
-                .get('/sanctum/csrf-cookie')
+                .get("/sanctum/csrf-cookie")
                 .then(() => {
                     apiClient
-                        .post('/api/register', userData)
+                        .post("/api/register", userData)
                         .then(response => {
                             console.log(response.data.message);
-
                             apiClient
-                                .post('/api/authenticate', userData)
+                                .post("/api/authenticate", userData)
                                 .then(response => {
                                     console.log(response.data.message);
-                                }).catch(error => {
-                                    console.log(error);
-                                });
-                        }).catch(error => {
-                            console.error(error)
-                        });
-                }).catch(error => {
-                    console.error(error)
-                });
+
+                                    location.hash = '/';
+                                }).catch(onAuthenticationRequestError);
+                        }).catch(onAuthenticationRequestError);
+                }).catch(onAuthenticationRequestError);
         }
-    }
+    },
+    components: { Authentication }
 });
 </script>
