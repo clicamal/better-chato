@@ -1,7 +1,9 @@
 <template>
     <Authentication heading="Registration" @submit="register">
-        <input v-model="username" type="text" name="username" id="username-input" class="pure-input-1" placeholder="Username">
-        <input v-model="password" type="password" name="password" id="password-input" class="pure-input-1" placeholder="Password">
+        <input v-model="username" type="text" name="username" id="username-input" class="pure-input-1"
+            placeholder="Username">
+        <input v-model="password" type="password" name="password" id="password-input" class="pure-input-1"
+            placeholder="Password">
         <button type="submit" class="pure-input-1 pure-button pure-button-active">Register</button>
     </Authentication>
 </template>

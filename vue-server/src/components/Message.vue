@@ -1,7 +1,7 @@
 <template>
     <li class="message">
-        <h4 ref="messageSenderUsername" class="message-sender-username">{{data.sender_username}}</h4>
-        <p class="message-content">{{data.content}}</p>
+        <h4 ref="messageSenderUsername" class="message-sender-username">{{ data.sender_username }}</h4>
+        <p class="message-content">{{ data.content }}</p>
     </li>
 </template>
 

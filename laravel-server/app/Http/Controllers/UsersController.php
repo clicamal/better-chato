@@ -33,7 +33,7 @@ class UsersController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt([ 'username' => $userData['username'], 'password' => $userData['password'] ])) {
+        if (Auth::attempt(['username' => $userData['username'], 'password' => $userData['password']])) {
             $request->session()->regenerate();
 
             return response([

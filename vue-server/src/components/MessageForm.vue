@@ -1,6 +1,7 @@
 <template>
     <form id="message-form" class="pure-form" @submit="sendMessage">
-        <input ref="messageContent" v-model="messageContent" autocomplete="off" id="message-content" type="text" placeholder="Type your message here.">
+        <input ref="messageContent" v-model="messageContent" autocomplete="off" id="message-content" type="text"
+            placeholder="Type your message here.">
         <button id="send-message" type="submit" class="pure-button pure-button-active">Send</button>
     </form>
 </template>
@@ -45,7 +46,8 @@ form#message-form {
     box-shadow: 0px 0px 7px 0px black;
 }
 
-input#message-content, button#send-message {
+input#message-content,
+button#send-message {
     display: inline;
     margin: 0px;
     height: 34px;
