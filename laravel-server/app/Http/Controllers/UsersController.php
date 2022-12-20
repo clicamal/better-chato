@@ -12,7 +12,7 @@ class UsersController extends Controller
     public function create(Request $request)
     {
         $userData = $request->validate([
-            'username' => 'required|unique:users|alpha_num|max:12',
+            'username' => 'required|unique:users|alpha_num|min:4|max:12',
             'password' => 'required'
         ]);
 
@@ -40,5 +40,11 @@ class UsersController extends Controller
                 'message' => 'User logged in successfully.'
             ]);
         }
+
+        return response([
+            'errors' => [
+                'username' => ['The username or the password are incorret.']
+            ]
+        ], 500);
     }
 }
