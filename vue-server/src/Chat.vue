@@ -20,6 +20,11 @@ export default defineComponent({
             .then(response => {
                 sessionStorage.setItem('username', response.data.username);
             })
+            .catch(error => {
+                if (error.response.status === 401) {
+                    location.href = '#login';
+                }
+            });
     }
 });
 </script>
