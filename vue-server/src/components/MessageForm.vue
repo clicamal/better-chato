@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts">
-import apiClient from '@/apiClient';
 import socketClient from '@/socketClient';
 import { defineComponent } from 'vue';
 
