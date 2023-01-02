@@ -6,13 +6,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import apiClient from './apiClient';
 import MessageForm from './components/MessageForm.vue';
 import MessagesList from './components/MessagesList.vue';
 import Navbar from './components/Navbar.vue';
 
 export default defineComponent({
     name: 'ChatComponent',
-    components: { Navbar, MessageForm, MessagesList }
+    components: { Navbar, MessageForm, MessagesList },
+    mounted() {
+        apiClient
+            .get('/api/user')
+            .then(response => {
+                sessionStorage.setItem('username', response.data.username);
+            })
+    }
 });
 </script>
 

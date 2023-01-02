@@ -7,6 +7,7 @@
 </template>
 
 <script lang="ts">
+import apiClient from '@/apiClient';
 import socketClient from '@/socketClient';
 import { defineComponent } from 'vue';
 
@@ -16,7 +17,6 @@ export default defineComponent({
     name: 'MessageForm',
     data() {
         return {
-            messageSenderUsername: username,
             messageContent: ''
         };
     },
@@ -25,7 +25,7 @@ export default defineComponent({
             event.preventDefault();
 
             const messageData = {
-                sender_username: this.messageSenderUsername,
+                sender_username: sessionStorage.getItem('username'),
                 content: this.messageContent
             };
 
