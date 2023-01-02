@@ -28,6 +28,7 @@ export default defineComponent({
                 username: this.username,
                 password: this.password
             };
+
             apiClient
                 .get("/sanctum/csrf-cookie")
                 .then(() => {
