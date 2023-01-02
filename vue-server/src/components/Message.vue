@@ -16,15 +16,6 @@ export default defineComponent({
             type: Object as PropType<MessageDataInterface>,
             required: true
         }
-    },
-    mounted() {
-        const messageSenderUsername = (this.$refs.messageSenderUsername as HTMLHeadingElement);
-        const username = sessionStorage.getItem('username');
-
-        if (this.data.sender_username === username) {
-            messageSenderUsername.innerText = 'You';
-            messageSenderUsername.style.textAlign = 'right';
-        }
     }
 });
 </script>
