@@ -51,7 +51,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 div.authentication {
     height: fit-content;
     width: calc(100% - 20px);
@@ -72,6 +72,12 @@ h3.authentication-form-heading {
     color: var(--primary-text-color);
     text-align: center;
     margin-top: 8.72px;
+}
+
+a.other-form-anchor {
+    color: white;
+    margin-top: 10px;
+    display: inline-block;
 }
 
 @media only screen and (min-width: 720px) {
