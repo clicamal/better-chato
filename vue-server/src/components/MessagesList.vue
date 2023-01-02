@@ -27,8 +27,9 @@ export default defineComponent({
         const messagesList = (this.$refs.messagesList as HTMLUListElement);
         const messagesListScrollHeight = messagesList.scrollHeight;
         const messagesListScrollTop = messagesList.scrollTop;
+        const scrollDownBreakPoint = messagesListScrollHeight / 3;
 
-        if (messagesListScrollTop > messagesListScrollHeight / 3) {
+        if (messagesListScrollTop > scrollDownBreakPoint) {
             messagesList.scroll({ top: messagesListScrollHeight });
         }
     }
