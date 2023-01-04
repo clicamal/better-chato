@@ -5,6 +5,8 @@
         <input v-model="password" type="password" name="password" id="password-input" class="pure-input-1"
             placeholder="Password">
         <button type="submit" class="pure-input-1 pure-button pure-button-active">Login</button>
+
+        <a href="#register" class="other-form-anchor">Don't you have an acount yet? Click here</a>
     </Authentication>
 </template>
 
