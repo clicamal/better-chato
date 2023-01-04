@@ -4,9 +4,10 @@ import Chat from './Chat.vue';
 import RegistrationForm from './RegistrationForm.vue';
 import LoginForm from './LoginForm.vue';
 import apiClient from './apiClient';
+import socketClient from './socketClient';
 
 const routes = [
-    { path: '/', component: Chat, props: { apiClient } },
+    { path: '/', component: Chat, props: { apiClient, socketClient } },
     { path: '/register', component: RegistrationForm, props: { apiClient } },
     { path: '/login', component: LoginForm, props: { apiClient } }
 ];
