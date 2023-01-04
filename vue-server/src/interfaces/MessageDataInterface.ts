@@ -1,6 +1,6 @@
 interface MessageDataInterface {
     id?: string,
-    sender_username: string,
+    sender_username?: string,
     content: string
 }
 

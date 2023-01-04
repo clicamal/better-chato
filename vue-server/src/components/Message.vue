@@ -1,6 +1,6 @@
 <template>
     <li class="message">
-        <h4 ref="messageSenderUsername" class="message-sender-username">{{ data.sender_username }}</h4>
+        <h4 ref="messageSenderUsername" class="message-sender-username" v-if="data.sender_username">{{ data.sender_username }}</h4>
         <p class="message-content">{{ data.content }}</p>
     </li>
 </template>
@@ -31,11 +31,11 @@ li.message {
 
 h4.message-sender-username {
     margin: 0px;
+    margin-bottom: 10px;
 }
 
 p.message-content {
     margin: 0px;
-    margin-top: 10px;
     word-break: break-all;
 }
 </style>

@@ -21,8 +21,7 @@ export default defineComponent({
     mounted() {
         socketClient.on('user-joined', userData => {
             this.messages.push({
-                sender_username: '',
-                content: `${userData.username} has joned the chat.`
+                content: `${userData.username} has joined the chat.`
             });
         });
 
