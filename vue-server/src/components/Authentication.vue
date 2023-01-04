@@ -3,7 +3,9 @@
         <form class="pure-form authentication-form" @submit="onSubmit">
             <h3 class="authentication-form-heading">{{ heading }}</h3>
 
-            <slot></slot>
+            <fieldset>
+                <slot></slot>
+            </fieldset>
         </form>
 
         <ErrorsList :errors="errors" />
@@ -72,6 +74,10 @@ h3.authentication-form-heading {
     color: var(--primary-text-color);
     text-align: center;
     margin-top: 8.72px;
+}
+
+div.pure-control-group {
+    margin-bottom: 10px;
 }
 
 a.other-form-anchor {
