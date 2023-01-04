@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import MessageDataInterface from '@/interfaces/MessageDataInterface';
-import socketClient from '@/socketClient';
-import { defineComponent } from 'vue';
+import { Socket } from 'socket.io-client';
+import { defineComponent, PropType } from 'vue';
 import Message from './Message.vue';
 
 export default defineComponent({
@@ -18,14 +18,20 @@ export default defineComponent({
             messages: [] as MessageDataInterface[]
         }
     },
+    props: {
+        socketClient: {
+            type: Object as PropType<Socket>,
+            required: true
+        }
+    },
     mounted() {
-        socketClient.on('user-joined', userData => {
+        this.socketClient.on('user-joined', userData => {
             this.messages.push({
                 content: `${userData.username} has joined the chat.`
             });
         });
 
-        socketClient.on('new-message', messageData => {
+        this.socketClient.on('new-message', messageData => {
             this.messages.push(messageData);
         });
     },

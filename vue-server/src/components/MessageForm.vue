@@ -7,8 +7,8 @@
 </template>
 
 <script lang="ts">
-import socketClient from '@/socketClient';
 import { AxiosInstance } from 'axios';
+import { Socket } from 'socket.io-client';
 import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
@@ -21,6 +21,10 @@ export default defineComponent({
     props: {
         apiClient: {
             type: Function as PropType<AxiosInstance>,
+            required: true
+        },
+        socketClient: {
+            type: Object as PropType<Socket>,
             required: true
         }
     },
@@ -36,7 +40,7 @@ export default defineComponent({
                         content: this.messageContent
                     };
 
-                    socketClient.emit('new-message', messageData);
+                    this.socketClient.emit('new-message', messageData);
 
                     this.messageContent = '';
                     (this.$refs.messageContent as HTMLInputElement).focus();
