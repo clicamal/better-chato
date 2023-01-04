@@ -6,14 +6,14 @@
             <slot></slot>
         </form>
 
-        <AuthenticationErrorsList :errors="errors" />
+        <ErrorsList :errors="errors" />
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { AxiosError, AxiosResponse } from 'axios';
-import AuthenticationErrorsList from './AuthenticationErrorsList.vue';
+import ErrorsList from './ErrosList.vue';
 
 export default defineComponent({
     name: "AuthenticationComponent",
@@ -47,7 +47,7 @@ export default defineComponent({
             this.$emit("submit", onAuthenticationRequestError);
         }
     },
-    components: { AuthenticationErrorsList }
+    components: { ErrorsList }
 });
 </script>
 
