@@ -6,4 +6,10 @@ const apiClient = axios.create({
     withCredentials: true
 });
 
+apiClient.interceptors.response.use(null, error => {
+    if (error.response.status === 401) {
+        location.href = '#login';
+    }
+});
+
 export default apiClient;
