@@ -21,8 +21,8 @@ export default defineComponent({
 <style scoped>
 ol#errors-list {
     background-color: pink;
-    color: red;
-    border: 2px solid red;
+    color: darkred;
+    border: 2px solid darkred;
     padding: 10px;
     padding-bottom: 0px;
     list-style: none;
