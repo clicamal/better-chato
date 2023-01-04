@@ -1,5 +1,5 @@
 interface MessageDataInterface {
-    id: string | undefined,
+    id?: string,
     sender_username: string,
     content: string
 }
