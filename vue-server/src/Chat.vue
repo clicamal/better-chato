@@ -10,6 +10,7 @@ import apiClient from './apiClient';
 import MessageForm from './components/MessageForm.vue';
 import MessagesList from './components/MessagesList.vue';
 import Navbar from './components/Navbar.vue';
+import socketClient from './socketClient';
 
 export default defineComponent({
     name: 'ChatComponent',
@@ -18,7 +19,7 @@ export default defineComponent({
         apiClient
             .get('/api/user')
             .then(response => {
-                sessionStorage.setItem('username', response.data.username);
+                socketClient.emit('user-joined', { username: response.data.username });
             })
             .catch(error => {
                 if (error.response.status === 401) {
