@@ -1,12 +1,12 @@
 <template>
     <Navbar />
     <MessagesList />
-    <MessageForm />
+    <MessageForm :api-client="apiClient"/>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import apiClient from './apiClient';
+import { AxiosInstance } from 'axios';
+import { defineComponent, PropType } from 'vue';
 import MessageForm from './components/MessageForm.vue';
 import MessagesList from './components/MessagesList.vue';
 import Navbar from './components/Navbar.vue';
@@ -15,16 +15,17 @@ import socketClient from './socketClient';
 export default defineComponent({
     name: 'ChatComponent',
     components: { Navbar, MessageForm, MessagesList },
+    props: {
+        apiClient: {
+            type: Object as PropType<AxiosInstance>,
+            required: true
+        }
+    },
     mounted() {
-        apiClient
+        this.apiClient
             .get('/api/user')
             .then(response => {
                 socketClient.emit('user-joined', { username: response.data.username });
-            })
-            .catch(error => {
-                if (error.response.status === 401) {
-                    location.href = '#login';
-                }
             });
     }
 });

@@ -19,8 +19,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import apiClient from './apiClient';
+import { AxiosInstance } from 'axios';
+import { defineComponent, PropType } from 'vue';
 import Authentication from './components/Authentication.vue';
 
 export default defineComponent({
@@ -32,6 +32,12 @@ export default defineComponent({
             password: ''
         }
     },
+    props: {
+        apiClient: {
+            type: Object as PropType<AxiosInstance>,
+            required: true
+        }
+    },
     methods: {
         login(onAuthenticationRequestError: (reason: any) => PromiseLike<never>) {
             const userData = {
@@ -39,10 +45,10 @@ export default defineComponent({
                 password: this.password
             };
 
-            apiClient
+            this.apiClient
                 .get("/sanctum/csrf-cookie")
                 .then(() => {
-                    apiClient
+                    this.apiClient
                         .post('/api/authenticate', userData)
                         .then(response => {
                             console.log(response.data.message);

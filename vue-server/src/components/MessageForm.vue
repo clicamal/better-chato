@@ -7,9 +7,9 @@
 </template>
 
 <script lang="ts">
-import apiClient from '@/apiClient';
 import socketClient from '@/socketClient';
-import { defineComponent } from 'vue';
+import { AxiosInstance } from 'axios';
+import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
     name: 'MessageForm',
@@ -18,11 +18,17 @@ export default defineComponent({
             messageContent: ''
         };
     },
+    props: {
+        apiClient: {
+            type: Object as PropType<AxiosInstance>,
+            required: true
+        }
+    },
     methods: {
         sendMessage(event: Event) {
             event.preventDefault();
 
-            apiClient
+            this.apiClient
                 .get('/api/user')
                 .then(response => {
                     const messageData = {
@@ -34,11 +40,6 @@ export default defineComponent({
 
                     this.messageContent = '';
                     (this.$refs.messageContent as HTMLInputElement).focus();
-                })
-                .catch(error => {
-                    if (error.response.status === 401) {
-                        location.href = '#login';
-                    }
                 });
         }
     }
