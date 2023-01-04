@@ -1,5 +1,5 @@
 <template>
-    <ol id="authentication-errors-list" v-if="errors.length > 0">
+    <ol id="errors-list" v-if="errors.length > 0">
         <li class="error" v-for="(message, index) in errors" :key="index">{{ message }}</li>
     </ol>
 </template>
@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'AuthenticationErrorsList',
+    name: 'ErrorsList',
     props: {
         errors: {
             type: Array,
@@ -19,7 +19,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-ol#authentication-errors-list {
+ol#errors-list {
     background-color: pink;
     color: red;
     border: 2px solid red;
