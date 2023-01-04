@@ -20,7 +20,7 @@ export default defineComponent({
     },
     props: {
         apiClient: {
-            type: Object as PropType<AxiosInstance>,
+            type: Function as PropType<AxiosInstance>,
             required: true
         }
     },

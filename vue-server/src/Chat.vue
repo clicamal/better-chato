@@ -17,7 +17,7 @@ export default defineComponent({
     components: { Navbar, MessageForm, MessagesList },
     props: {
         apiClient: {
-            type: Object as PropType<AxiosInstance>,
+            type: Function as PropType<AxiosInstance>,
             required: true
         }
     },
