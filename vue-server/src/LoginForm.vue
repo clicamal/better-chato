@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import apiClient from './apiClient';
-import Authentication from './components/authentication/Authentication.vue';
+import Authentication from './components/Authentication.vue';
 
 export default defineComponent({
     name: "LoginForm",
