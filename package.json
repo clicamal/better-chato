@@ -15,7 +15,7 @@
     "install-vue-server": "cd vue-server && npm install && cp .env.example .env",
     "set-laravel-server-prod": "cd laravel-server && composer install --optimize-autoloader --no-dev && php artisan config:cache && php artisan route:cache",
     "build-vue-server": "cd vue-server && npm run build",
-    "install": "npm run install-laravel-server && npm run install-socket-server && npm run install-vue-server",
+    "install-better-chato": "npm run install-laravel-server && npm run install-socket-server && npm run install-vue-server",
     "build": "npm run set-laravel-server-prod && npm run build-vue-server",
     "start-dev": "concurrently \"npm:start-laravel-server-dev\" \"npm:start-socket-server\" \"npm:start-vue-server-dev\"",
     "start": "concurrently \"npm:start-laravel-server\" \"npm:start-socket-server\" \"npm:start-vue-server\""
