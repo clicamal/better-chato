@@ -32,19 +32,10 @@ export default defineComponent({
         sendMessage(event: Event) {
             event.preventDefault();
 
-            this.apiClient
-                .get('/api/user')
-                .then(response => {
-                    const messageData = {
-                        sender_username: response.data.username,
-                        content: this.messageContent
-                    };
+            this.socketClient.emit('new-message', this.messageContent);
 
-                    this.socketClient.emit('new-message', messageData);
-
-                    this.messageContent = '';
-                    (this.$refs.messageContent as HTMLInputElement).focus();
-                });
+            this.messageContent = '';
+            (this.$refs.messageContent as HTMLInputElement).focus();
         }
     }
 });
