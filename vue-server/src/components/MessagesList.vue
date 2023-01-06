@@ -34,6 +34,12 @@ export default defineComponent({
         this.socketClient.on('new-message', messageData => {
             this.messages.push(messageData);
         });
+
+        this.socketClient.on('user-left', userData => {
+            this.messages.push({
+                content: `${userData.username} has left the chat.`
+            });
+        });
     },
     updated() {
         const messagesList = (this.$refs.messagesList as HTMLUListElement);

@@ -29,7 +29,9 @@ export default defineComponent({
         this.apiClient
             .get('/api/user')
             .then(response => {
-                this.socketClient.emit('user-joined', { username: response.data.username });
+                const userData = { username: response.data.username };
+
+                this.socketClient.emit('user-joined', userData);
             });
     }
 });
