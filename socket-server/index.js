@@ -15,26 +15,26 @@ const httpServerPort = process.env.SOCKET_SERVER_PORT;
 io.on('connection', socket => {
     console.log(`A socket has been connected: ${socket.id}.`);
 
-    let username = null;
+    let user = null;
 
     socket.on('user-joined', userData => {
         console.log('A user has joined.');
 
-        username = userData.username;
+        user = userData;
 
         io.emit('user-joined', userData);
     });
 
-    socket.on('new-message', messageData => {
+    socket.on('new-message', messageContent => {
         console.log('A message has been sent.');
 
-        io.emit('new-message', messageData);
+        io.emit('new-message', { sender_username: user.username, content: messageContent });
     });
 
     socket.on('disconnect', () => {
         console.log('A user has left.');
 
-        io.emit('user-left', { username });
+        io.emit('user-left', user);
     });
 });
 
